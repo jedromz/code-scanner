@@ -38,6 +38,7 @@ const MainBarcodeScannerPage = () => {
           setCarbs(nutriments.carbohydrates_100g || 0);
           setFat(nutriments.fat_100g || 0);
           setCalories(nutriments['energy-kcal_100g'] || 0);
+          setError(null);  // Reset the error state after a successful scan
         }
         if (err && !(err instanceof NotFoundException)) {
           console.log(err);
@@ -71,7 +72,7 @@ const MainBarcodeScannerPage = () => {
               <ScanButton onClick={handleClick} />
             }
           </div>
-          {error && <div className="mt-4 text-red-500">Product not found</div>}  {/* Display the error message if there is an error */}
+          {error && <div className="mt-4 text-red-500">{error}</div>}  {/* Display the error message if there is an error */}
         </div>
       </div>
     </div>
